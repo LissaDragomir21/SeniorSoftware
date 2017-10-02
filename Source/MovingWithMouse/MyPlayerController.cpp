@@ -87,15 +87,17 @@ void AMyPlayerController::MoveToTouchLocation(const ETouchIndex::Type FingerInde
 
 void AMyPlayerController::SetNewMoveDestination(const FVector DestLocation)
 {
-	APawn* const MyPawn = GetPawn();
+	AMyCharacter* MyPawn = Cast<AMyCharacter>(GetPawn());
+
 	if (MyPawn)
 	{
 		UNavigationSystem* const NavSys = GetWorld()->GetNavigationSystem();
 		float const Distance = FVector::Dist(DestLocation, MyPawn->GetActorLocation());
 
 		//we need to issue move command only if far enough in order for walk animation to play correctly
-		if (NavSys && (Distance > 120.0f))
+		if (NavSys && (Distance > 120.0f) && (MyPawn->getDistanceLeft() > 0))
 		{
+			MyPawn->modDistanceLeft(-1);
 			NavSys->SimpleMoveToLocation(this, DestLocation);
 		}
 	}

@@ -15,19 +15,6 @@
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
-	//ship object variables
-	FString type;
-	int hitPointsCur = 0;
-	int hitPointsMax = 0;
-	int armor = 0;
-	int shieldCur = 0;
-	int shieldMax = 0;
-	float shieldRechargeRate = 0;
-	int mass = 0;
-	int speed = 0;
-	int manuever = 0;
-	//TODO array of weapons for ship to have
-	//TODO array of engines for ship to have
 
 	//set size for player capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -122,3 +109,12 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
+float AMyCharacter::getDistanceLeft()
+{
+	return distanceLeft;
+}
+
+void AMyCharacter::modDistanceLeft(float modDist)
+{
+	distanceLeft = distanceLeft + modDist;
+}

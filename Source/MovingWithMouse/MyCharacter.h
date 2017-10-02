@@ -30,6 +30,9 @@ public:
 	//returns CursorToWorld subobject
 	FORCEINLINE class UDecalComponent* GetCursorToWorld() { return CursorToWorld; }
 
+	float getDistanceLeft();
+	void modDistanceLeft(float distMod);
+
 	//bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -45,5 +48,20 @@ private:
 	//create decal at cursor location in level
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UDecalComponent* CursorToWorld;
+
+	//ship object variables
+	FString type;
+	int hitPointsCur = 0;
+	int hitPointsMax = 0;
+	int armor = 0;
+	int shieldCur = 0;
+	int shieldMax = 0;
+	float shieldRechargeRate = 0;
+	int mass = 0;
+	float speed = 0;
+	int manuever = 0;
+	float distanceLeft = 6;
+	//TODO array of weapons for ship to have
+	//TODO array of engines for ship to have
 	
 };
